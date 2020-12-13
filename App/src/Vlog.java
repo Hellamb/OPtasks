@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Vlog {
@@ -55,6 +56,27 @@ public class Vlog {
         }
 
         return views;
+    }
+
+
+    public ArrayList<Video> getWorstVideos(ArrayList<Video> videos){
+        ArrayList<Video> worstVideos = new ArrayList<Video>();
+        int disMax = 0;
+        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
+        {
+            Video element = (Video)iterator.next();
+            int dis = element.getDislikes();
+            if (dis > disMax)
+                disMax = dis;
+        }
+        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
+        {
+            Video element = (Video)iterator.next();
+            int dis = element.getDislikes();
+            if (dis == disMax)
+                worstVideos.add(element);
+        }
+        return worstVideos;
     }
 
     @Override

@@ -28,13 +28,15 @@ public class Comment {
             this.likes --;
     }
 
+
     public void increaseDislike() {
-        this.dislikes = this.dislikes + 1;
+        this.dislikes ++;
+
     }
 
     public void decreaseDislike() {
         if (this.dislikes != 0)
-            this.dislikes--;
+            this.dislikes --;
     }
 
     public void setLikes(long likes) {
