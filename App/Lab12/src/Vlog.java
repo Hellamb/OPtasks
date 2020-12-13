@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Vlog {
     private String author;
-    private ArrayList<Video> videos = new ArrayList<>();
+    private HashSet<Video> videos = new HashSet<>();
 
     public Vlog(String author)
     {
@@ -23,7 +24,7 @@ public class Vlog {
         this.videos.add(vid);
     }
 
-    public ArrayList<Video> getVideos()
+    public HashSet<Video> getVideos()
     {
         return videos;
     }
@@ -37,19 +38,35 @@ public class Vlog {
         else throw new IndexOutOfBoundsException("Vlog " + author + "does not contain video");
     }
 
-    public void setVideos(ArrayList<Video> videos)
+    public void setVideos(HashSet<Video> videos)
     {
         this.videos = videos;
     }
 
-    public long overallViews()
+    public int overallViews()
     {
-        return 0;
+        int allViews = 0;
+        for(Video vid : videos)
+        {
+            allViews += vid.getViews();
+        }
+        return allViews;
     }
 
 
-    public ArrayList<Video> getWorstVideos(){
-       return null;
+    public HashSet<Video> getWorstVideos()
+    {
+       int maxDis = 0;
+        HashSet<Video> worst = new HashSet<Video>();
+       for(Video vid: videos)
+       {
+           if(vid.getDislikes() > maxDis) maxDis = vid.getDislikes();
+       }
+       for(Video vid: videos)
+       {
+           if(vid.getDislikes() == maxDis) worst.add(vid);
+       }
+       return worst;
     }
 
     @Override

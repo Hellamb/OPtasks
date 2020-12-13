@@ -7,6 +7,7 @@ public class Main {
 
             Video v = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
 
+<<<<<<< HEAD
             for (int i = 0; i < 5; i++)
             {
                 v = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
@@ -15,12 +16,14 @@ public class Main {
             }
 
             v = vl1.getVideos().first();
+=======
+>>>>>>> master
             Comment com = new Comment("It's a good video");
             com.setLikes(5);
             Comment com2 = new Comment("It's a bad video");
 
             v.addComment(com);
-            v.addComment(com2);
+            //v.addComment(com2);
 
             System.out.println("Task 1: " + vl1.overallViews());
             System.out.println("Task 2: " + v.isMorePopularComment());
