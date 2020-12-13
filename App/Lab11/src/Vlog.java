@@ -4,7 +4,8 @@ import java.util.Comparator;
 
 public class Vlog {
     private String author;
-    private TreeSet<Video> videos = new TreeSet<>();
+    private VideoComparator vcomp = new VideoComparator();
+    private TreeSet<Video> videos = new TreeSet<Video>(vcomp);
     public Vlog(String author)
     {
         this.author = author;
@@ -39,13 +40,34 @@ public class Vlog {
 
     public long overallViews()
     {
-        return 0;
+        Iterator<Video> iter = videos.iterator();
+        long views = 0;
+
+        while(iter.hasNext())
+        {
+            Video video = iter.next();
+            views += video.getViews();
+        }
+
+        return views;
     }
 
 
     public TreeSet<Video> getWorstVideos()
     {
-        return null;
+        TreeSet<Video> worstVideos = new TreeSet<Video>(vcomp);
+        Iterator<Video> itr = videos.iterator();
+        boolean stop = false;
+        Video element1 = itr.next();
+        worstVideos.add(element1);
+
+        while (itr.hasNext() && element1.compareTo(itr.next())==0)
+        {
+            element1 = itr.next();
+            element1 = itr.previous();
+            worstVideos.add(element1);
+        }
+        return worstVideos;
     }
 
     @Override
