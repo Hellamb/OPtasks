@@ -67,7 +67,6 @@ public class Vlog {
            if(vid.getDislikes() == maxDis) worst.add(vid);
        }
        return worst;
-
     }
 
     @Override
