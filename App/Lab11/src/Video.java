@@ -122,22 +122,12 @@ public class Video implements Comparable<Video>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Video video = (Video) o;
-        boolean eqCom = true;
-        for (int i = 0; i < comments.size(); i++)
-        {
-            if (!comments.get(i).equals(((Video) o).comments.get(i)))
-            {
-                eqCom = false;
-                break;
-            }
-        }
-
         return views == video.views &&
                 likes == video.likes &&
                 dislikes == video.dislikes &&
                 Objects.equals(name, video.name) &&
                 Objects.equals(url, video.url) &&
-                eqCom;
+                Objects.equals(comments, video.comments);
     }
 
     @Override
