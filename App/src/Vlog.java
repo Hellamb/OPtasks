@@ -30,7 +30,11 @@ public class Vlog {
 
     public void removeVideo(Video vid)
     {
-        videos.removeIf(video -> (video.equals(vid)));
+        if(videos.contains(vid))
+        {
+            videos.remove(vid);
+        }
+        else throw new IndexOutOfBoundsException("Vlog " + author + "does not contain video");
     }
 
     public void setVideos(ArrayList<Video> videos)
