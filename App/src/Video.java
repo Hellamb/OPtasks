@@ -84,6 +84,11 @@ public class Video {
         else throw new IndexOutOfBoundsException("List of comments is empty");
     }
 
+    public void removeComment(Comment o)
+    {
+        if (!comments.remove(o)) throw new IndexOutOfBoundsException("Video " + name + "does not contain comment");
+    }
+
     public void addComment(Comment comment)
     {
         comments.add(comment);
