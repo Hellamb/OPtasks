@@ -86,7 +86,7 @@ public class Video {
 
     public void removeComment(Comment o)
     {
-        if (!comments.remove(o)) throw new IndexOutOfBoundsException("Video " + name + "does not contain comment");
+        if (!comments.remove(o)) throw new IndexOutOfBoundsException("Video " + name + " does not contain a comment");
     }
 
     public void addComment(Comment comment)
