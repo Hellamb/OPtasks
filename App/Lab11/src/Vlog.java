@@ -1,11 +1,11 @@
 import java.util.Objects;
 import java.util.TreeSet;
-import java.util.Comparator;
+import java.util.Iterator;
 
 public class Vlog {
     private String author;
     private VideoComparator vcomp = new VideoComparator();
-    private TreeSet<Video> videos = new TreeSet<Video>(vcomp);
+    private TreeSet<Video> videos = new TreeSet<>(vcomp);
     public Vlog(String author)
     {
         this.author = author;
@@ -55,17 +55,17 @@ public class Vlog {
 
     public TreeSet<Video> getWorstVideos()
     {
-        TreeSet<Video> worstVideos = new TreeSet<Video>(vcomp);
-        Iterator<Video> itr = videos.iterator();
+        TreeSet<Video> worstVideos = new TreeSet<>(vcomp);
+        Iterator<Video> itr = this.videos.iterator();
         Video element1 = itr.next();
         worstVideos.add(element1);
-        if (itr.hasNext())
+        if (itr.hasNext()) {
             Video element2 = itr.next();
-        while (itr.hasNext() || element1.compareTo(element2)==0)
-        {
-            element1 = element2;
-            element2 = itr.next();
-            worstVideos.add(element1);
+            while (itr.hasNext() || element1.compareTo(element2) == 0) {
+                element1 = element2;
+                element2 = itr.next();
+                worstVideos.add(element1);
+            }
         }
         return worstVideos;
     }

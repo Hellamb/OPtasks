@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Comment {
+public class Comment implements Comparable<Comment> {
     private final String text;
     private long likes;
     private long dislikes;
@@ -49,6 +49,16 @@ public class Comment {
 
     public void setDislikes(long dislikes) {
         this.dislikes = dislikes;
+    }
+
+    @Override
+    public int compareTo(Comment c){
+        if (this.getText().length() > c.getText().length())
+            return 1;
+        else if (this.getText().length() == c.getText().length())
+            return 0;
+        else
+            return -1;
     }
 
     @Override

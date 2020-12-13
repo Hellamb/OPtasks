@@ -108,10 +108,11 @@ public class Video implements Comparable<Video>{
         return false;
     }
 
+    @Override
     public int compareTo(Video v){
-        if (this.getDislikes() > v.getDislikes())
+        if (this.dislikes > v.getDislikes()) {
             return 1;
-        else if (this.getDislikes() == v.getDislikes())
+        } else if (this.dislikes == v.getDislikes())
             return 0;
         else
             return -1;
