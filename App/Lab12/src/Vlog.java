@@ -45,39 +45,12 @@ public class Vlog {
 
     public long overallViews()
     {
-        ListIterator<Video> iter = videos.listIterator();
-        long views = 0;
-
-        while(iter.hasNext())
-        {
-            Video video = iter.next();
-            views += video.getViews();
-        }
-
-        return views;
+        return 0;
     }
 
 
     public ArrayList<Video> getWorstVideos(){
-        ArrayList<Video> worstVideos = new ArrayList<>();
-        int disMax = 0;
-
-        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
-        {
-            Video element = (Video)iterator.next();
-            int dis = element.getDislikes();
-            if (dis > disMax)
-                disMax = dis;
-        }
-
-        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
-        {
-            Video element = (Video)iterator.next();
-            int dis = element.getDislikes();
-            if (dis == disMax)
-                worstVideos.add(element);
-        }
-        return worstVideos;
+       return null;
     }
 
     @Override

@@ -1,6 +1,6 @@
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Video {
@@ -9,7 +9,7 @@ public class Video {
     private long views;
     private int likes;
     private int dislikes;
-    private ArrayList<Comment> comments = new ArrayList<>();
+    private HashSet<Comment> comments = new HashSet<>();
 
     Video(String name, String url) throws MalformedURLException {
         setName(name);
@@ -73,7 +73,7 @@ public class Video {
         dislikes = dislikes > 0 ? dislikes - 1 : 0;
     }
 
-    public ArrayList<Comment> getComments() {
+    public HashSet<Comment> getComments() {
         return comments;
     }
 
@@ -108,27 +108,19 @@ public class Video {
         return false;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Video video = (Video) o;
-        boolean eqCom = true;
-        for (int i = 0; i < comments.size(); i++)
-        {
-            if (!comments.get(i).equals(((Video) o).comments.get(i)))
-            {
-                eqCom = false;
-                break;
-            }
-        }
-
         return views == video.views &&
                 likes == video.likes &&
                 dislikes == video.dislikes &&
                 Objects.equals(name, video.name) &&
                 Objects.equals(url, video.url) &&
-                eqCom;
+                Objects.equals(comments, video.comments);
     }
 
     @Override
