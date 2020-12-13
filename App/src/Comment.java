@@ -5,10 +5,10 @@ public class Comment {
     private long likes;
     private long dislikes;
 
-    public Comment(String text, long likes, long dislikes){
+    public Comment(String text){
         this.text = text;
-        this.likes = likes;
-        this.dislikes = dislikes;
+        this.likes = 0;
+        this.dislikes = 0;
     }
 
     public String getText() {
@@ -19,22 +19,22 @@ public class Comment {
         return likes;
     }
 
-    public void addLike() {
-        this.likes ++;
+    public void increaseLike() {
+        this.likes++;
     }
 
-    public void removeLike() {
+    public void decreaseLike() {
         if (this.likes != 0)
             this.likes --;
     }
 
-    public void addDislike() {
+    public void increaseDislike() {
         this.dislikes = this.dislikes + 1;
     }
 
-    public void removeDislike() {
+    public void decreaseDislike() {
         if (this.dislikes != 0)
-            this.dislikes = this.dislikes - 1;
+            this.dislikes--;
     }
 
     public void setLikes(long likes) {
@@ -64,6 +64,6 @@ public class Comment {
         return "Comment: " + '\n' +
                 "Text: " + text + '\n' +
                 likes + " likes" + '\n' +
-                dislikes + "dislikes" + '\n';
+                dislikes + " dislikes" + '\n';
     }
 }
