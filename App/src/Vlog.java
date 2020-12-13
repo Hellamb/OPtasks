@@ -59,9 +59,10 @@ public class Vlog {
     }
 
 
-    public ArrayList<Video> getWorstVideos(ArrayList<Video> videos){
-        ArrayList<Video> worstVideos = new ArrayList<Video>();
+    public ArrayList<Video> getWorstVideos(){
+        ArrayList<Video> worstVideos = new ArrayList<>();
         int disMax = 0;
+
         for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
         {
             Video element = (Video)iterator.next();
@@ -69,6 +70,7 @@ public class Vlog {
             if (dis > disMax)
                 disMax = dis;
         }
+
         for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
         {
             Video element = (Video)iterator.next();

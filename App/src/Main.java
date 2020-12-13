@@ -4,15 +4,29 @@ public class Main {
     public static void main(String[] args) {
         try
         {
-            Comment com = new Comment("It's a good video");
-            Comment com2 = new Comment("It's a bad video");
-            Video v1 = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
-            v1.addComment(com);
-            v1.removeComment(com);
             Vlog vl1 = new Vlog("//Who//");
-            vl1.addVideo(v1);
-            vl1.addVideo(v1);
-            System.out.println(v1.toString());
+
+            Video v;
+
+            for (int i = 0; i < 1000; i++)
+            {
+                v = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
+                v.setViews(i);
+                vl1.addVideo(v);
+            }
+
+            v = vl1.getVideos().get(0);
+            Comment com = new Comment("It's a good video");
+            com.setLikes(5);
+            Comment com2 = new Comment("It's a bad video");
+
+            v.addComment(com);
+            v.addComment(com2);
+
+            System.out.println("Task 1: " + vl1.overallViews());
+            System.out.println("Task 2: " + v.isMorePopularComment());
+            System.out.println("Task 3: " + vl1.getWorstVideos());
+
             //System.out.println(vl1.toString());
         }catch (MalformedURLException e)
         {

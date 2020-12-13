@@ -35,6 +35,11 @@ public class Video {
         return views;
     }
 
+    public void setViews(long views)
+    {
+        this.views = views > 0 ? views : 0;
+    }
+
     public void increaseViews()
     {
         views++;
