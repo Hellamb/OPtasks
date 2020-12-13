@@ -94,6 +94,15 @@ public class Video {
         comments.add(comment);
     }
 
+    public boolean isMorePopularComment()
+    {
+        for( Comment com : comments)
+        {
+            if (com.getLikes() > this.likes) return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
