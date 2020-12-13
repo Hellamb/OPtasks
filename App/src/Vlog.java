@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Objects;
 
 public class Vlog {
     private String author;
-    private ArrayList<Video> videos = new ArrayList<Video>();
+    private ArrayList<Video> videos = new ArrayList<>();
 
     public Vlog(String author)
     {
@@ -31,6 +32,20 @@ public class Vlog {
     public void setVideos(ArrayList<Video> videos)
     {
         this.videos = videos;
+    }
+
+    public long overallViews()
+    {
+        ListIterator<Video> iter = videos.listIterator();
+        long views = 0;
+
+        while(iter.hasNext())
+        {
+            Video video = iter.next();
+            views += video.getViews();
+        }
+
+        return views;
     }
 
     @Override
