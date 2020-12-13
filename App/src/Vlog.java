@@ -28,6 +28,11 @@ public class Vlog {
         return videos;
     }
 
+    public void removeVideo(Video vid)
+    {
+        videos.removeIf(video -> (video.equals(vid)));
+    }
+
     public void setVideos(ArrayList<Video> videos)
     {
         this.videos = videos;
