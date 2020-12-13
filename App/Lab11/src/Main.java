@@ -2,7 +2,37 @@ import java.net.MalformedURLException;
 
 public class Main {
     public static void main(String[] args) throws MalformedURLException {
-        Video vid = new Video("123", "https://www.youtube.com/watch?v=xaW7SX43nuo");
+        try {
+            Vlog vl1 = new Vlog("//Who//");
+
+            Video v;
+
+            for (int i = 0; i < 5; i++)
+            {
+                v = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
+                v.setViews(i);
+                vl1.addVideo(v);
+            }
+
+            v = vl1.getVideos().get(0);
+            Comment com = new Comment("It's a good video");
+            com.setLikes(5);
+            Comment com2 = new Comment("It's a bad video");
+
+            v.addComment(com);
+            v.addComment(com2);
+
+            System.out.println("Task 1: " + vl1.overallViews());
+            System.out.println("Task 2: " + v.isMorePopularComment());
+            System.out.println("Task 3: " + vl1.getWorstVideos());
+
+            //System.out.println(vl1.toString());
+
+        } catch (MalformedURLException e) {
+            System.out.println("Exception: Invalid url for video");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
     }
 
 }

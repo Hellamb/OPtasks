@@ -3,7 +3,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.TreeSet;
 
-public class Video {
+public class Video implements Comparable<Video>{
     private String name;
     private final String url;
     private long views;
@@ -106,6 +106,15 @@ public class Video {
             if (com.getLikes() > this.likes) return true;
         }
         return false;
+    }
+
+    public int compareTo(Video v){
+        if (this.getDislikes() > v.getDislikes())
+            return 1;
+        else if (this.getDislikes() == v.getDislikes())
+            return 0;
+        else
+            return -1;
     }
 
     @Override
