@@ -96,7 +96,7 @@ public class Video implements Comparable<Video>{
 
     public void addComment(Comment comment)
     {
-        comments.add(comment);
+        this.comments.add(comment);
     }
 
     public boolean isMorePopularComment()

@@ -42,14 +42,31 @@ public class Vlog {
         this.videos = videos;
     }
 
-    public long overallViews()
+    public int overallViews()
     {
-        return 0;
+        int allViews = 0;
+        for(Video vid : videos)
+        {
+            allViews += vid.getViews();
+        }
+        return allViews;
     }
 
 
-    public ArrayList<Video> getWorstVideos(){
-       return null;
+    public ArrayList<Video> getWorstVideos()
+    {
+       int maxDis = 0;
+       ArrayList<Video> worst = new ArrayList<Video>();
+       for(Video vid: videos)
+       {
+           if(vid.getDislikes() > maxDis) maxDis = vid.getDislikes();
+       }
+       for(Video vid: videos)
+       {
+           if(vid.getDislikes() == maxDis) worst.add(vid);
+       }
+       return worst;
+
     }
 
     @Override

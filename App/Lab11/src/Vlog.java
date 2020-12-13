@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.TreeSet;
 import java.util.Comparator;
@@ -59,8 +60,9 @@ public class Vlog {
         Iterator<Video> itr = videos.iterator();
         Video element1 = itr.next();
         worstVideos.add(element1);
-        if (itr.hasNext())
+        //if (itr.hasNext()) {
             Video element2 = itr.next();
+        //}
         while (itr.hasNext() || element1.compareTo(element2)==0)
         {
             element1 = element2;

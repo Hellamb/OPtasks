@@ -77,21 +77,13 @@ public class Video {
         return comments;
     }
 
-    public void removeComment(int index)
-    {
-        if (comments.size() != 0) comments.remove(index);
-        else throw new IndexOutOfBoundsException("List of comments is empty");
-    }
-
-    public void removeComment()
-    {
-        if (comments.size() != 0) comments.remove(comments.size() - 1);
-        else throw new IndexOutOfBoundsException("List of comments is empty");
-    }
-
     public void removeComment(Comment o)
     {
-        if (!comments.remove(o)) throw new IndexOutOfBoundsException("Video " + name + " does not contain a comment");
+        if(comments.contains(o))
+        {
+            comments.remove(o);
+        }
+        else throw new IndexOutOfBoundsException("Video " + name + "does not contain comment");
     }
 
     public void addComment(Comment comment)
