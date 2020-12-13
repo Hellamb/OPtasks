@@ -9,7 +9,7 @@ public class Video {
     private long views;
     private int likes;
     private int dislikes;
-    private ArrayList<Comment> comments;
+    private ArrayList<Comment> comments = new ArrayList<>();
 
     Video(String name, String url) throws MalformedURLException {
         setName(name);
