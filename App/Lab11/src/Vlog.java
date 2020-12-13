@@ -57,14 +57,14 @@ public class Vlog {
     {
         TreeSet<Video> worstVideos = new TreeSet<Video>(vcomp);
         Iterator<Video> itr = videos.iterator();
-        boolean stop = false;
         Video element1 = itr.next();
         worstVideos.add(element1);
-
-        while (itr.hasNext() && element1.compareTo(itr.next())==0)
+        if (itr.hasNext())
+            Video element2 = itr.next();
+        while (itr.hasNext() || element1.compareTo(element2)==0)
         {
-            element1 = itr.next();
-            element1 = itr.previous();
+            element1 = element2;
+            element2 = itr.next();
             worstVideos.add(element1);
         }
         return worstVideos;
