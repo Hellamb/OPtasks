@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Vlog {
     private String author;
-    ArrayList<Video> videos;
+    private ArrayList<Video> videos = new ArrayList<Video>();
 
     public Vlog(String author)
     {
@@ -17,9 +18,19 @@ public class Vlog {
         this.author = author;
     }
 
-    public void addVideo(Video video)
+    public void addVideo(Video vid)
     {
-        this.videos.add(video);
+        this.videos.add(vid);
+    }
+
+    public ArrayList<Video> getVideos()
+    {
+        return videos;
+    }
+
+    public void setVideos(ArrayList<Video> videos)
+    {
+        this.videos = videos;
     }
 
     @Override
@@ -28,5 +39,19 @@ public class Vlog {
                 "author='" + author + '\'' +
                 ", videos=" + videos +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vlog vlog = (Vlog) o;
+        return Objects.equals(author, vlog.author) &&
+                Objects.equals(videos, vlog.videos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, videos);
     }
 }
