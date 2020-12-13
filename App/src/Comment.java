@@ -19,6 +19,24 @@ public class Comment {
         return likes;
     }
 
+    public void addLike() {
+        this.likes ++;
+    }
+
+    public void removeLike() {
+        if (this.likes != 0)
+            this.likes --;
+    }
+
+    public void addDislike() {
+        this.dislikes = this.dislikes + 1;
+    }
+
+    public void removeDislike() {
+        if (this.dislikes != 0)
+            this.dislikes = this.dislikes - 1;
+    }
+
     public void setLikes(long likes) {
         this.likes = likes;
     }
@@ -43,10 +61,9 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" +
-                "text='" + text + '\'' +
-                ", likes=" + likes +
-                ", dislikes=" + dislikes +
-                '}';
+        return "Comment: " + '\n' +
+                "Text: " + text + '\n' +
+                likes + " likes" + '\n' +
+                dislikes + "dislikes" + '\n';
     }
 }
