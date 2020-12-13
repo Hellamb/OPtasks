@@ -1,34 +1,27 @@
-import java.util.ArrayList;
-import java.util.ListIterator;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class Vlog {
     private String author;
-    private ArrayList<Video> videos = new ArrayList<>();
-
+    private TreeSet<Video> videos = new TreeSet<>();
     public Vlog(String author)
     {
         this.author = author;
     }
-
     public String getAuthor() {
         return author;
     }
-
     public void setAuthor(String author) {
         this.author = author;
     }
-
     public void addVideo(Video vid)
     {
         this.videos.add(vid);
     }
-
-    public ArrayList<Video> getVideos()
+    public TreeSet<Video> getVideos()
     {
         return videos;
     }
-
     public void removeVideo(Video vid)
     {
         if(videos.contains(vid))
@@ -38,46 +31,20 @@ public class Vlog {
         else throw new IndexOutOfBoundsException("Vlog " + author + "does not contain video");
     }
 
-    public void setVideos(ArrayList<Video> videos)
+    public void setVideos(TreeSet<Video> videos)
     {
         this.videos = videos;
     }
 
     public long overallViews()
     {
-        ListIterator<Video> iter = videos.listIterator();
-        long views = 0;
-
-        while(iter.hasNext())
-        {
-            Video video = iter.next();
-            views += video.getViews();
-        }
-
-        return views;
+        return 0;
     }
 
 
-    public ArrayList<Video> getWorstVideos(){
-        ArrayList<Video> worstVideos = new ArrayList<>();
-        int disMax = 0;
-
-        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
-        {
-            Video element = (Video)iterator.next();
-            int dis = element.getDislikes();
-            if (dis > disMax)
-                disMax = dis;
-        }
-
-        for (ListIterator iterator = videos.listIterator(); iterator.hasNext();)
-        {
-            Video element = (Video)iterator.next();
-            int dis = element.getDislikes();
-            if (dis == disMax)
-                worstVideos.add(element);
-        }
-        return worstVideos;
+    public TreeSet<Video> getWorstVideos()
+    {
+        return null;
     }
 
     @Override

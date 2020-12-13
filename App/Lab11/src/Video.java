@@ -1,7 +1,7 @@
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class Video {
     private String name;
@@ -9,7 +9,7 @@ public class Video {
     private long views;
     private int likes;
     private int dislikes;
-    private ArrayList<Comment> comments = new ArrayList<>();
+    private TreeSet<Comment> comments = new TreeSet<>();
 
     Video(String name, String url) throws MalformedURLException {
         setName(name);
@@ -73,7 +73,7 @@ public class Video {
         dislikes = dislikes > 0 ? dislikes - 1 : 0;
     }
 
-    public ArrayList<Comment> getComments() {
+    public TreeSet<Comment> getComments() {
         return comments;
     }
 
