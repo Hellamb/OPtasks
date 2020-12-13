@@ -145,6 +145,6 @@ public class Video {
                 ", likes=" + likes +
                 ", dislikes=" + dislikes +
                 ", comments=" + comments +
-                '}';
+                '}'+"\n";
     }
 }

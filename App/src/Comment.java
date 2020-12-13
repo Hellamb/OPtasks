@@ -63,9 +63,9 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment: " + '\n' +
-                "Text: " + text + '\n' +
-                likes + " likes" + '\n' +
-                dislikes + " dislikes" + '\n';
+        return "Comment: {" +
+                "Text: " + text + ", " +
+                likes + " likes, " +
+                dislikes + " dislikes}" + '\n';
     }
 }

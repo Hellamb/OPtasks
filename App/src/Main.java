@@ -8,7 +8,7 @@ public class Main {
 
             Video v;
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 5; i++)
             {
                 v = new Video("Hello", "https://www.youtube.com/watch?v=xaW7SX43nuo");
                 v.setViews(i);
