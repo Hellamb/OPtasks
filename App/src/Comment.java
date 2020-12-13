@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Comment {
     private final String text;
     private long likes;
@@ -27,5 +29,24 @@ public class Comment {
 
     public void setDislikes(long dislikes) {
         this.dislikes = dislikes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return likes == comment.likes &&
+                dislikes == comment.dislikes &&
+                Objects.equals(text, comment.text);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "text='" + text + '\'' +
+                ", likes=" + likes +
+                ", dislikes=" + dislikes +
+                '}';
     }
 }
