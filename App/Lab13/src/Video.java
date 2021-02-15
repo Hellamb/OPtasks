@@ -11,7 +11,7 @@ public class Video {
     private int dislikes;
     private HashSet<Comment> comments = new HashSet<>();
 
-    Video(String name, String url) throws MalformedURLException {
+    Video(String name, String url) throws MalformedURLException, EmptyFieldException {
         setName(name);
 
         URL u = new URL(url);
@@ -23,7 +23,10 @@ public class Video {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws EmptyFieldException {
+        if (name == null) throw new NullPointerException();
+        if (name.length() == 0) throw new EmptyFieldException();
+
         this.name = name;
     }
 
