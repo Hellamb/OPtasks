@@ -6,16 +6,18 @@ public class Vlog {
     private String author;
     private HashSet<Video> videos = new HashSet<>();
 
-    public Vlog(String author)
-    {
-        this.author = author;
+    public Vlog(String author) throws EmptyFieldException {
+        setAuthor(author);
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(String author) throws  EmptyFieldException{
+        if (author == null) throw new NullPointerException();
+        if (author.length() == 0) throw new EmptyFieldException();
+
         this.author = author;
     }
 
@@ -57,7 +59,8 @@ public class Vlog {
     public HashSet<Video> getWorstVideos()
     {
        int maxDis = 0;
-        HashSet<Video> worst = new HashSet<Video>();
+       HashSet<Video> worst = new HashSet<Video>();
+
        for(Video vid: videos)
        {
            if(vid.getDislikes() > maxDis) maxDis = vid.getDislikes();
