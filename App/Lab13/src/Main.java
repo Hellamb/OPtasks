@@ -29,8 +29,11 @@ public class Main {
             System.out.println("Найгірші відео: " + vlog2.getWorstVideos());
         }catch (MalformedURLException e)
         {
-            System.out.println("Exception: Invalid url for video");
+            System.out.println("Exception: " + e.getMessage());
         }catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("Exception: " + e.getMessage());
+        }catch (EmptyFieldException e)
         {
             System.out.println("Exception: " + e.getMessage());
         }
