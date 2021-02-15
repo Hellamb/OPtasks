@@ -5,9 +5,10 @@ public class Task4 {
         BufferedReader reader = new BufferedReader(new FileReader(source));
         String str = reader.readLine();
         String strUpper = str.toUpperCase();
+        reader.close();
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(destination));
         writer.write(strUpper);
-        writer.flush();
+        writer.close();
     }
 }
