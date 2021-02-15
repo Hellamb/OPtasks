@@ -66,6 +66,6 @@ public class Comment {
         return "Comment: {" +
                 "Text: " + text + ", " +
                 likes + " likes, " +
-                dislikes + " dislikes}" + '\n';
+                dislikes + " dislikes}";
     }
 }
