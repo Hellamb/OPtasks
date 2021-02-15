@@ -123,12 +123,12 @@ public class Video {
     @Override
     public String toString() {
         return "Video{" +
-                "name='" + name +
-                ", url='" + url  +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
                 ", views=" + views +
                 ", likes=" + likes +
                 ", dislikes=" + dislikes +
                 ", comments=" + comments +
-                '}';
+                '}'+"\n";
     }
 }
