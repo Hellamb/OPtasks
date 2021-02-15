@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9244447-c2aa-4e97-9208-39a827652975" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab14/src/Task10.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab14/src/Task10.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Lab14" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,12 +62,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1786" y="-18" key="FileChooserDialogImpl" timestamp="1613393861065">
-      <screen x="1366" y="-265" width="1280" height="984" />
+    <state x="840" y="351" key="FileChooserDialogImpl" timestamp="1613399820617">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1786" y="-18" key="FileChooserDialogImpl/0.0.1366.728/1366.-265.1280.984/-1280.-258.1280.984@1366.-265.1280.984" timestamp="1613393861065" />
+    <state x="840" y="351" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1613399820617" />
     <state x="1388" y="-153" key="new project wizard" timestamp="1613393871786">
       <screen x="1366" y="-265" width="1280" height="984" />
     </state>
