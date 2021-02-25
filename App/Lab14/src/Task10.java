@@ -1,19 +1,23 @@
 import java.io.*;
 
 public class Task10 {
+    int BUFFER_MAX_SIZE = 8192; // зависит от компьютера, больше лучше не ставить
     public void split(String source, String destinationPrefix, long maxSize) throws IOException
     {
         try(BufferedInputStream fileInputStream =  new BufferedInputStream( new FileInputStream(source)))
         {
-            long currentSize = 0; //текущее количество прочитанных байтов, до смены файла
             int bufferSize;   //размер буфера
-            if(maxSize>2048)   //
+            if(maxSize>BUFFER_MAX_SIZE)   //
             {
-                bufferSize = 2048;
+                bufferSize = BUFFER_MAX_SIZE;
+            }else if(maxSize<=0)
+            {
+                throw new IllegalArgumentException("maxSize ");
             }else
             {
                 bufferSize = (int)maxSize;
             }
+            long currentSize = 0; //текущее количество прочитанных байтов, до смены файла
             int lastPoint = bufferSize; //количество байт, которые нужно считать, до предела буфера либо файла
             int value;  //количество байт прочитанных из файла
             int fileNum = 0; //номер файла
