@@ -13,7 +13,7 @@ public class KseniaPageServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><head></head><body>");
         out.println("<h1>Hello from KseniaPageServlet</h1>");
-        out.println("<img src = ''></br>");
+        out.println("<img src = 'Images/KseniaPhoto.jpg'></br>");
         out.println("<a href = 'VladPageServlet'>To Vlad Page</a></br>");
         out.println("<a href = 'DimaPageServlet'>To Dima Page</a></br>");
         out.println("</body></html>");
