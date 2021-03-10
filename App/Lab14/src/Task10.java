@@ -23,15 +23,17 @@ public class Task10 {
             int fileNum = 0; //номер файла
             boolean isLast = false; //флаг для проверки, нужно ли менять номер файла
             byte[] buf = new byte[lastPoint];
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(destinationPrefix+"."+fileNum+".txt",true));
             while((value = fileInputStream.read(buf,0, lastPoint))!=-1)
             {
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(destinationPrefix+"."+fileNum+".txt",true));
                 bufferedOutputStream.write(buf,0,value);
                 currentSize+= value;
 
                 if(isLast) //меняет номер файла и сбрасывает значения до изначальных
                 {
                     fileNum++;
+                    bufferedOutputStream.close();
+                    bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(destinationPrefix+"."+fileNum+".txt",true));
                     lastPoint = bufferSize;
                     isLast = false;
                     currentSize = 0;
@@ -43,9 +45,8 @@ public class Task10 {
                     isLast = true;
 
                 }
-                bufferedOutputStream.close();
-
             }
+            bufferedOutputStream.close();
         }
 
     }
