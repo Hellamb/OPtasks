@@ -7,7 +7,7 @@
 <body>
 <h1><%= "Team 4 Lab 1" %></h1>
 <br/>
-<a href="hello-servlet">To Image</a>
+<a href="${pageContext.request.contextPath}/hello-servlet">To Image</a>
 <p><%=request.getContextPath() %></p>
 </body>
 </html>

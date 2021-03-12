@@ -13,7 +13,7 @@ public class DimaPageServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><head></head><body>");
         out.println("<h1>Hello from DimaPageServlet</h1>");
-        out.println("<img src = 'DimaPhoto.jpg'></br>");
+        out.println("<img src = 'Images/DimaPhoto.jpg'></br>");
         out.println("<a href = 'KseniaPageServlet'>To Ksenia Page</a></br>");
         out.println("<a href = 'VladPageServlet'>To Vlad Page</a></br>");
         out.println("</body></html>");
