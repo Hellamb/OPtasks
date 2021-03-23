@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(180deg, #fff, #9FC3E7);
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 120px 0;
+}
+
+.result-content{
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 30px;
+    border: 2px solid #318CE7;
+}
+
+.result-header{
+    margin-bottom: 30px;
+    border-bottom: 2px solid #000;
+}
+
+.result-items{
+    padding-left: 10px;
+}
+
+.result-item{
+    margin-bottom: 15px;
+}
+
+.equation-description{
+    vertical-align: middle;
+}
+
+.equation-description span{
+    vertical-align: top;
+}
+
+.result-item:last-of-type{
+    margin-bottom: 0;
+}

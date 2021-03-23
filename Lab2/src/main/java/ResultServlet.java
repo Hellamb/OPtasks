@@ -15,6 +15,7 @@ public class ResultServlet extends HttpServlet {
 
         if (!params.containsKey("a") || !params.containsKey("b") || !params.containsKey("c") || !params.containsKey("d") || !params.containsKey("equation"))
         {
+            //Bad Request
             response.sendError(400);
             return;
         }
@@ -51,13 +52,13 @@ public class ResultServlet extends HttpServlet {
         }
         catch (NumberFormatException e)
         {
+            //Bad request
             response.sendError(400);
             return;
         }
 
-        final int cookiesLen = 5;
-
-        Cookie[] eqData = new Cookie[cookiesLen];
+        //Work with Cookies
+        Cookie[] eqData = new Cookie[5];
 
         eqData[0] = new Cookie("parameterA", params.get("a")[0]);
         eqData[1] = new Cookie("parameterB", params.get("b")[0]);
@@ -65,7 +66,7 @@ public class ResultServlet extends HttpServlet {
         eqData[3] = new Cookie("parameterD", params.get("d")[0]);
         eqData[4] = new Cookie("nEquation", params.get("equation")[0]);
 
-        for (int i = 0; i < cookiesLen; i++)
+        for (int i = 0; i < eqData.length; i++)
         {
             //2 Days
             eqData[i].setMaxAge(172800);
@@ -73,7 +74,7 @@ public class ResultServlet extends HttpServlet {
             response.addCookie(eqData[i]);
         }
 
-
+        //Get View
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/solution.jsp").forward(request, response);
     }
 }

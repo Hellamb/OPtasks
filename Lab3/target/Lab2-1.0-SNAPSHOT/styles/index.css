@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(180deg, #fff, #9FC3E7);
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 0;
+}
+
+.form{
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 30px;
+    border: 2px solid #318CE7;
+    margin-bottom: 80px;
+}
+
+.inputs{
+    width: 300px;
+}
+
+.parameters{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #000;
+}
+
+.parameters > input{
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid #318CE7;
+}
+
+.parameters > input:last-of-type{
+    margin-bottom: 20px;
+}
+
+.equation{
+    margin-top: 20px;
+    border-bottom: 2px solid #000;
+    color: #318CE7;
+}
+
+.equation > label{
+    position: relative;
+    display: block;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.equation > label:last-of-type{
+    margin-bottom: 20px;
+}
+
+.equation > label::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+    display: none;
+    border: 1px solid #000;
+}
+
+.equation > label:nth-of-type(1)::after{
+    content: url("../images/equation1.png");
+}
+
+.equation > label:nth-of-type(2)::after{
+    content: url("../images/equation2.png");
+}
+
+.equation > label:nth-of-type(3)::after{
+    content: url("../images/equation3.png");
+}
+
+.equation > label:hover::after{
+    display: block;
+}
+
+.submit{
+    margin-top: 20px;
+}
+
+.submit > input{
+    cursor: pointer;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 10px;
+    background: rgba(49, 140, 231, .9);
+    outline: none;
+    color: #fff;
+    border: none;
+}
+
+.submit > input:hover{
+    transform: scale(1.05);
+}
+
+table, th, td{
+    border: 1px solid #000;
+}
+
+th{
+    font-size: 24px;
+    padding: 0 40px;
+    background-color: #318CE7;
+    height: 3em;
+    color: #fff;
+}
+
+.data-display{
+    font-family: 'Open Sans', sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.data-display th:nth-of-type(1){
+    padding: 0 20px;
+}
+
+.data-display tr:nth-child(even){background-color: #f2f2f2;}
+.data-display tr:nth-child(2n + 1){background-color: #fff;}
