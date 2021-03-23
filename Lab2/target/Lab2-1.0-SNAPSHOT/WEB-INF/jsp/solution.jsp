@@ -22,7 +22,7 @@
             <h1 class="result-header">Result of calculations:</h1>
             <ul class="result-items">
                 <li class="result-item"><span class="equation-description"><span>Equation:</span><img src="${pageContext.request.contextPath}/images/equation<c:out value="${param.get('equation')}" />.png" alt="equation"></span></li>
-                <li class="result-item">Parameters: <i><c:out value="a=${param.get('a')}" />, <c:out value="b=${param.get('b')}" />, <c:out value="c=${param.get('c')}" />, <c:out value="d=${param.get('d')}" /></i></li>
+                <li class="result-item">Parameters: <i><c:out value="a=${param.get('a')}"/>, <c:out value="b=${param.get('b')}" />, <c:out value="c=${param.get('c')}" />, <c:out value="d=${param.get('d')}" /></i></li>
                 <li class="result-item">Result: <i>${requestScope.result}</i></li>
             </ul>
         </div>
