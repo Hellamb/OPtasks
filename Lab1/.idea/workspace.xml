@@ -24,20 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bafe2fe1-7288-4279-b2ae-79d06d00355d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/classes/META-INF/beans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/faces-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/jsp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/jsp/solution.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/images/equation1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/images/equation2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/images/equation3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/styles/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/Lab2-1.0-SNAPSHOT/styles/solution.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/classes/META-INF/beans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/target/classes/META-INF/persistence.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,12 +94,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.43">
+  <component name="RunManager" selected="Smart Tomcat.Tomcat">
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Lab1_war_exploded" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/Lab1_war_exploded" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <file path="$PROJECT_DIR$">
@@ -124,6 +110,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_Lab1" />
+        <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -260,11 +247,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
+    <configuration name="Tomcat" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY" singleton="false">
       <option name="adminPort" value="8005" />
       <option name="contextPath" value="/Lab1" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="passParentEnvironmentVariables" value="true" />
       <option name="port" value="8080" />
       <option name="tomcatInfo">
@@ -325,6 +314,7 @@
       <workItem from="1616077969008" duration="771000" />
       <workItem from="1616084105861" duration="16000" />
       <workItem from="1616089956824" duration="152000" />
+      <workItem from="1616134686335" duration="1145000" />
     </task>
     <servers />
   </component>
