@@ -93,6 +93,7 @@
                     <th>c</th>
                     <th>d</th>
                     <th>equation</th>
+                    <th>solution</th>
                 </tr>
 
                 <c:forEach varStatus="loop" var="row" items="${sessionScope['parameters']}">
@@ -103,6 +104,7 @@
                         <td><c:out value="${row.get('c')}" /></td>
                         <td><c:out value="${row.get('d')}" /></td>
                         <td><img src="/images/equation<c:out value="${row.get('equation')}" />.png" alt="" /></td>
+                        <td><c:out value="${row.get('result')}" /></td>
                     </tr>
                 </c:forEach>
             </table>

@@ -21,29 +21,31 @@ public class StartServlet extends HttpServlet {
                 return;
             }
 
+            double result;
+
             try
             {
                 switch (params.get("equation")[0])
                 {
                     case "1":
-                        request.setAttribute("result", Equations.template1(Double.parseDouble(params.get("a")[0]),
+                         result = Equations.template1(Double.parseDouble(params.get("a")[0]),
                                 Double.parseDouble(params.get("b")[0]),
                                 Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0])));
+                                Double.parseDouble(params.get("d")[0]));
                         break;
 
                     case "2":
-                        request.setAttribute("result", Equations.template2(Double.parseDouble(params.get("a")[0]),
+                         result = Equations.template2(Double.parseDouble(params.get("a")[0]),
                                 Double.parseDouble(params.get("b")[0]),
                                 Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0])));
+                                Double.parseDouble(params.get("d")[0]));
                         break;
 
                     case "3":
-                        request.setAttribute("result", Equations.template3(Double.parseDouble(params.get("a")[0]),
+                         result = Equations.template3(Double.parseDouble(params.get("a")[0]),
                                 Double.parseDouble(params.get("b")[0]),
                                 Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0])));
+                                Double.parseDouble(params.get("d")[0]));
                         break;
 
                     default:
@@ -84,7 +86,8 @@ public class StartServlet extends HttpServlet {
                         "b", params.get("b")[0],
                         "c", params.get("c")[0],
                         "d", params.get("d")[0],
-                        "equation", params.get("equation")[0]));
+                        "equation", params.get("equation")[0],
+                        "result", String.valueOf(result)));
             else
             {
                 ArrayList<Map<String, String>> sesParams = new ArrayList<>();
@@ -93,7 +96,8 @@ public class StartServlet extends HttpServlet {
                         "b", params.get("b")[0],
                         "c", params.get("c")[0],
                         "d", params.get("d")[0],
-                        "equation", params.get("equation")[0]));
+                        "equation", params.get("equation")[0],
+                        "result", String.valueOf(result)));
 
                 session.setAttribute("parameters", sesParams);
             }
