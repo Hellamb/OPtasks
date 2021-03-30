@@ -76,7 +76,7 @@ public class Main {
 
         LinkedList<Student> topStudents = new LinkedList<>();
         university.getList().forEach(x -> x.getList().stream()
-                        .filter(y -> y.getScore() > middleScore).forEach(y -> topStudents.add(y)));
+                        .filter(y -> y.getScore() > middleScore).forEach(topStudents::add));
         topStudents.stream().sorted(Comparator.comparing(Student::getName)).forEach(System.out::println);
 
     }
