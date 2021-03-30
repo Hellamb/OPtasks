@@ -9,8 +9,9 @@ public class OneThread implements Task {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        long time = System.currentTimeMillis()-timeStart;
         System.out.println("Результат однопоточности: " + thread.result +
-                " расчитан за " + (System.currentTimeMillis()-timeStart) + " мс"
+                " расчитан за " + time + " мс"
         );
     }
 }

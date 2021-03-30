@@ -10,9 +10,10 @@ public class MultiThreads implements Task{
         for(int thCount : arrThreadsCounts) {
             timeStart = System.currentTimeMillis();
             long res = calculateArithmeticProgress(nMax, thCount);
+            long time = System.currentTimeMillis()-timeStart;
             System.out.println("Результат: " + res +
                     " кол-во потоков " + thCount +
-                    " расчитан за " + (System.currentTimeMillis()-timeStart) + " мс"
+                    " расчитан за " + time + " мс"
             );
         }
     }
@@ -30,17 +31,17 @@ public class MultiThreads implements Task{
         int mLast = n/threadsCount + n%threadsCount;
 
         //в этом списке храним все запускаемые потоки
-        List<ArithmeticThread> threads = new ArrayList<>(threadsCount);
+        List<ArithmeticThread> threads = new ArrayList<ArithmeticThread>(threadsCount);
 
 
         //запускаем потоки
         ArithmeticThread at;
-        for(int i = 0;i<threadsCount;i++){
+        for(int i = 0; i < threadsCount; i++){
             nMin = nMax + 1;
             nMax = (nMin - 1) + (i==threadsCount-1 ? mLast : m);
 
             at = new ArithmeticThread(nMin, nMax);
-            threads.add( at );
+            threads.add(at);
             at.start();
         }
 

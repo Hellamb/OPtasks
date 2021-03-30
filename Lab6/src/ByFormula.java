@@ -3,8 +3,9 @@ public class ByFormula implements Task{
     public void calc(int nMax) {
         long timeStart = System.currentTimeMillis();
         long res = (2 * 4 + (nMax - 1)*4)*nMax/2;
+        long time = System.currentTimeMillis()-timeStart;
         System.out.println("Результат по формуле: " + res +
-                " расчитан за " + (System.currentTimeMillis()-timeStart) + " мс"
+                " расчитан за " + time + " мс"
         );
     }
 }
