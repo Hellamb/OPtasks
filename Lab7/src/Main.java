@@ -11,7 +11,23 @@ public class Main {
             output.add("result" + i + ".txt");
         }
 
-        //многопоточный
+        oneThread(input, output);
+        multiThread(input, output);
+    }
+
+    public static void oneThread(ArrayList<String> input, ArrayList<String> output) throws IOException, InterruptedException
+    {
+        long timeStart = System.currentTimeMillis();
+        Thread onet = new Thread(new OneThread(input, output));
+        onet.start();
+        onet.join();
+        System.out.println("Результат однопоточности расчитан за " +
+                (System.currentTimeMillis()-timeStart) + " мс");
+
+    }
+
+    public static void multiThread(ArrayList<String> input, ArrayList<String> output) throws IOException, InterruptedException
+    {
         long timeStart = System.currentTimeMillis();
         for (int i=0;i<8;i++){
             Thread t = new Thread(new MultiThread(input.get(i), output.get(i)));
@@ -20,17 +36,6 @@ public class Main {
         }
         System.out.println("Результат многопоточности расчитан за " +
                 (System.currentTimeMillis()-timeStart) + " мс");
-        
-
-
-        //однопоточный
-        /*
-        long timeStart = System.currentTimeMillis();
-        Thread onet = new Thread(new OneThread(input, output));
-        onet.start();
-        onet.join();
-        System.out.println("Результат однопоточности расчитан за " +
-                (System.currentTimeMillis()-timeStart) + " мс");
-         */
     }
+
 }
