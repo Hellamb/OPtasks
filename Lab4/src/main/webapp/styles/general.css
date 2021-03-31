@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #F5E9E2;
+}
+
+input {
+  outline: none;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=general.css.map */
