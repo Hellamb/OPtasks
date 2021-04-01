@@ -12,7 +12,7 @@ public class ArithmeticThread extends Thread {
     public void run() {
         long res=0;
         for(int i = nMin; i <= nMax; i++){
-            res += 4*i;
+            res += 4L*i;
         }
         result = res;
     }
