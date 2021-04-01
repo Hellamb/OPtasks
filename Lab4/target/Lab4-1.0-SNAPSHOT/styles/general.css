@@ -4,7 +4,13 @@
 
 body {
   margin: 0;
-  background-color: #F5E9E2;
+  padding-top: 100px;
+  background-color: #f5e9e2;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 input {
@@ -13,6 +19,21 @@ input {
 
 input[type=submit] {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button, input[type=submit] {
+  box-sizing: content-box;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: #0B0014;
+  color: #D44D5C;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
 }
 
 /*# sourceMappingURL=general.css.map */

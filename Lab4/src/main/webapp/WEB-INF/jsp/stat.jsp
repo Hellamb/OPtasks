@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -9,6 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/general.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/nav/nav.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/stat/stat.css" />
+
     <title>Statistics</title>
 </head>
 <body>
@@ -16,7 +21,13 @@
 
     <ul class="stat">
         <c:forEach items="${requestScope.stat.entrySet()}" var="statItem">
-            <li class="stat-item">${statItem.key}: <c:forEach items="${statItem.value}" var="valueItem">${valueItem}, </c:forEach></li>
+            <li class="stat-item">${statItem.key}:
+                <c:forEach items="${statItem.value}" var="valueItem" varStatus="loop">
+                    <c:choose>
+                        <c:when test="${loop.index == fn:length(statItem.value) - 1}">${valueItem}</c:when>
+                        <c:otherwise>${valueItem}, </c:otherwise>
+                    </c:choose>
+                </c:forEach></li>
         </c:forEach>
     </ul>
 </body>
