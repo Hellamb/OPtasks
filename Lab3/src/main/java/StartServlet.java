@@ -25,36 +25,17 @@ public class StartServlet extends HttpServlet {
 
             try
             {
-                double a = Double.parseDouble(params.get("a")[0]);
-                double b = Double.parseDouble(params.get("b")[0]);
-                double c = Double.parseDouble(params.get("c")[0]);
-                double d = Double.parseDouble(params.get("d")[0]);
-
-                switch (params.get("equation")[0])
-                {
-                    case "1":
-                         result = Equations.template1(a, b, c, d);
-                        break;
-
-                    case "2":
-                         result = Equations.template2(a, b, c, d);
-                        break;
-
-                    case "3":
-                         result = Equations.template3(a, b, c, d);
-                        break;
-
-                    default:
-                        response.sendError(400, "Wrong equation");
-                        return;
-                }
-            }
-            catch (NumberFormatException e)
+                 result = Equations.parseParams(params.get("a")[0],
+                                                        params.get("b")[0],
+                                                        params.get("c")[0],
+                                                        params.get("d")[0],
+                                                        params.get("equation")[0]);
+            }catch (IllegalArgumentException e)
             {
-                //Bad request
-                response.sendError(400);
+                response.sendError(400, e.getMessage());
                 return;
             }
+
 
             //Cookies
             Cookie[] eqData = new Cookie[5];
