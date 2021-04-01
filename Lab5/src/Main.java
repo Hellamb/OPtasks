@@ -6,17 +6,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         try {
-            Task ttt = new Task();
-            ArrayList<String> result = ttt.commonestWords("source.txt");
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-            //writer.
-            writer.write("Найчастіше зустрічаються:");
-            writer.newLine();
-            for (String item: result){
-                writer.write(item);
-                writer.newLine();
-            }
-            writer.close();
+            Task task = new Task();
+            task.complete("source.txt","output.txt");
         }
         catch (IOException err)
         {

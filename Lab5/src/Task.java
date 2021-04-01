@@ -2,38 +2,54 @@ import java.io.*;
 import java.util.*;
 
 public class Task {
-    ArrayList<String> commonestWords(String filename) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
-        String str;
-        Map<String, Integer> comWords = new HashMap<String, Integer>();
 
-        while ((str = reader.readLine()) != null){
-            String[] words = str.split(" ");
-            for (int i = 0; i < words.length;i++){
-                if (comWords.containsKey(words[i])){
-                    int tmp = comWords.get(words[i]);
-                    comWords.put(words[i], tmp + 1);
-                }
-                else{
-                    comWords.put(words[i],1);
-                }
-            }
-        }
-
-        Map<String,Integer> sortedWords = sortByComparator(comWords, false);
-        Integer v = 0;
-        ArrayList<String> comWordsMax = new ArrayList<String>();
-        for (Map.Entry<String, Integer> entry : sortedWords.entrySet())
+    public ArrayList<String> commonestWords(String filename) throws IOException {
+        try(BufferedReader reader = new BufferedReader(new FileReader(filename)))
         {
-            //System.out.println(entry.getKey() + " " + entry.getValue());
-            if ((v == 0) || v == entry.getValue()) {
-                v = entry.getValue();
-                comWordsMax.add(entry.getKey());
+            String str;
+            Map<String, Integer> comWords = new HashMap<String, Integer>();
+
+            while ((str = reader.readLine()) != null) {
+                String[] words = str.split(" ");
+                for (String word : words) {
+                    if (comWords.containsKey(word)) {
+                        int tmp = comWords.get(word);
+                        comWords.put(word, tmp + 1);
+                    } else {
+                        comWords.put(word, 1);
+                    }
+                }
             }
+
+            Map<String, Integer> sortedWords = sortByComparator(comWords, false);
+            Integer v = 0;
+            ArrayList<String> comWordsMax = new ArrayList<String>();
+            for (Map.Entry<String, Integer> entry : sortedWords.entrySet()) {
+                //System.out.println(entry.getKey() + " " + entry.getValue());
+                if ((v == 0) || v == entry.getValue()) {
+                    v = entry.getValue();
+                    comWordsMax.add(entry.getKey());
+                }
+            }
+            return comWordsMax;
         }
 
-        reader.close();
-        return comWordsMax;
+    }
+
+    public void complete(String inputFile, String outputFile) throws IOException
+    {
+
+        ArrayList<String> result = commonestWords(inputFile);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile)))
+        {
+            //writer.
+            writer.write("Найчастіше зустрічаються:");
+            writer.newLine();
+            for (String item : result) {
+                writer.write(item);
+                writer.newLine();
+            }
+        }
     }
 
     private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order)
