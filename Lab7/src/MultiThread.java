@@ -4,10 +4,12 @@ import java.util.*;
 public class MultiThread implements Runnable{
     BufferedReader reader;
     BufferedWriter writer;
+    String name;
 
-    public MultiThread(String inFilename, String outFilename) throws IOException {
+    public MultiThread(String inFilename, String outFilename,String name) throws IOException {
         this.reader = new BufferedReader(new FileReader(inFilename));
         this.writer = new BufferedWriter(new FileWriter(outFilename,true));
+        this.name = name;
     }
 
     @Override
@@ -41,9 +43,8 @@ public class MultiThread implements Runnable{
                 }
             }
 
-            synchronized (writer) {
-                this.writer.write("Найчастіше зустрічаються: ");
-
+            synchronized (this.writer) {
+                this.writer.write("Найчастіше зустрічаються: " + this.name);
                 this.writer.newLine();
                 for (String item : comWordsMax) {
                     this.writer.write(item);
