@@ -25,27 +25,23 @@ public class StartServlet extends HttpServlet {
 
             try
             {
+                double a = Double.parseDouble(params.get("a")[0]);
+                double b = Double.parseDouble(params.get("b")[0]);
+                double c = Double.parseDouble(params.get("c")[0]);
+                double d = Double.parseDouble(params.get("d")[0]);
+
                 switch (params.get("equation")[0])
                 {
                     case "1":
-                         result = Equations.template1(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
+                         result = Equations.template1(a, b, c, d);
                         break;
 
                     case "2":
-                         result = Equations.template2(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
+                         result = Equations.template2(a, b, c, d);
                         break;
 
                     case "3":
-                         result = Equations.template3(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
+                         result = Equations.template3(a, b, c, d);
                         break;
 
                     default:
@@ -81,23 +77,20 @@ public class StartServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             ArrayList<Map<String, String>> ps = (ArrayList<Map<String, String>>) session.getAttribute("parameters");
+            Map<String, String> eqSesData = Map.of("a", params.get("a")[0],
+                    "b", params.get("b")[0],
+                    "c", params.get("c")[0],
+                    "d", params.get("d")[0],
+                    "equation", params.get("equation")[0],
+                    "result", String.valueOf(result));
+
             if (ps != null)
-                ps.add(Map.of("a", params.get("a")[0],
-                        "b", params.get("b")[0],
-                        "c", params.get("c")[0],
-                        "d", params.get("d")[0],
-                        "equation", params.get("equation")[0],
-                        "result", String.valueOf(result)));
+                ps.add(eqSesData);
             else
             {
                 ArrayList<Map<String, String>> sesParams = new ArrayList<>();
 
-                sesParams.add(Map.of("a", params.get("a")[0],
-                        "b", params.get("b")[0],
-                        "c", params.get("c")[0],
-                        "d", params.get("d")[0],
-                        "equation", params.get("equation")[0],
-                        "result", String.valueOf(result)));
+                sesParams.add(eqSesData);
 
                 session.setAttribute("parameters", sesParams);
             }
