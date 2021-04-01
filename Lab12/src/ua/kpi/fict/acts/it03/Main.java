@@ -1,5 +1,6 @@
 package ua.kpi.fict.acts.it03;
 
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,9 +40,11 @@ public class Main {
         faculty2.getList().add(student4);
 
 
-        //task1(abitura, 4);
+        task1(abitura, 4);
+        System.out.println("---");
         task2(univer);
-        //task3(abitura);
+        System.out.println("---");
+        task3(abitura);
 
 
     }
