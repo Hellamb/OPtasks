@@ -1,0 +1,68 @@
+.video-content {
+  padding-left: 100px;
+  margin-bottom: 100px;
+}
+.video-content .video-wrapper .video iframe {
+  width: 640px;
+  height: 360px;
+}
+.video-content .video-wrapper .video-description .video-likes, .video-content .video-wrapper .video-description .video-dislikes {
+  cursor: pointer;
+}
+.video-content .comments-wrapper {
+  margin-top: 40px;
+}
+.video-content .comments-wrapper .add-comment {
+  width: 600px;
+}
+.video-content .comments-wrapper .add-comment textarea {
+  width: 100%;
+  padding: 10px;
+  resize: none;
+}
+.video-content .comments-wrapper .add-comment .button-comment {
+  margin-top: 25px;
+  text-align: right;
+}
+.video-content .comments-wrapper .add-comment .button-comment input[type=submit] {
+  box-sizing: content-box;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #0B0014;
+  color: #D44D5C;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+}
+.video-content .comments-wrapper .comments {
+  width: 550px;
+}
+.video-content .comments-wrapper .comments .comment {
+  min-height: 80px;
+  background-color: #fff;
+  border: 1px solid darkgrey;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.video-content .comments-wrapper .comments .comment:last-of-type {
+  margin-bottom: 0;
+}
+.video-content .comments-wrapper .comments .comment .comment-author {
+  margin-top: 0;
+}
+.video-content .comments-wrapper .comments .comment .comment-body {
+  padding-left: 20px;
+}
+.video-content .comments-wrapper .comments .comment .statistics {
+  text-align: right;
+}
+.video-content .comments-wrapper .comments .comment .statistics .comment-likes {
+  padding-right: 10px;
+}
+
+#liked, #disliked {
+  display: none;
+}
+
+/*# sourceMappingURL=video.css.map */

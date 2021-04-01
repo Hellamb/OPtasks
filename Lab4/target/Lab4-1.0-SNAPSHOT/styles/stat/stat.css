@@ -1,0 +1,12 @@
+.stat {
+  padding-left: 100px;
+}
+.stat .stat-item {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.stat .stat-item:last-of-type {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=stat.css.map */
