@@ -7,7 +7,7 @@ public class MultiThread implements Runnable{
 
     public MultiThread(String inFilename, String outFilename) throws IOException {
         this.reader = new BufferedReader(new FileReader(inFilename));
-        this.writer = new BufferedWriter(new FileWriter(outFilename));
+        this.writer = new BufferedWriter(new FileWriter(outFilename,true));
     }
 
     @Override
@@ -16,20 +16,18 @@ public class MultiThread implements Runnable{
         Map<String, Integer> comWords = new HashMap<String, Integer>();
 
         try {
-            synchronized (reader) {
-                while ((str = reader.readLine()) != null) {
-                    String[] words = str.split(" ");
-                    for (int i = 0; i < words.length; i++) {
-                        if (comWords.containsKey(words[i])) {
-                            int tmp = comWords.get(words[i]);
-                            comWords.put(words[i], tmp + 1);
-                        } else {
-                            comWords.put(words[i], 1);
-                        }
+            while ((str = reader.readLine()) != null) {
+                String[] words = str.split(" ");
+                for (int i = 0; i < words.length; i++) {
+                    if (comWords.containsKey(words[i])) {
+                        int tmp = comWords.get(words[i]);
+                        comWords.put(words[i], tmp + 1);
+                    } else {
+                        comWords.put(words[i], 1);
                     }
                 }
-                this.reader.close();
             }
+            this.reader.close();
 
             Map<String,Integer> sortedWords = sortByComparator(comWords, false);
             Integer v = 0;

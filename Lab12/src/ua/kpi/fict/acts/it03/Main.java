@@ -3,6 +3,7 @@ package ua.kpi.fict.acts.it03;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -73,6 +74,12 @@ public class Main {
                 .forEach(x-> sum[1] += x.getList().size()); //общее количество студентов
 
         int middleScore = sum[0]/sum[1];
+
+        /*LinkedList<Student> allStudents = new LinkedList<>();
+        university.getList().forEach(x -> x.getList().stream()
+                .forEach(allStudents::add));
+        double middleScore2 = allStudents.stream().mapToInt(st -> st.getScore()).average().getAsDouble();
+        System.out.println(middleScore + middleScore2);*/
 
         LinkedList<Student> topStudents = new LinkedList<>();
         university.getList().forEach(x -> x.getList().stream()

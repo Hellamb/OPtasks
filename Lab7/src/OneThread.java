@@ -3,9 +3,9 @@ import java.util.*;
 
 public class OneThread implements Runnable{
     ArrayList<String> input = new ArrayList<String>();
-    ArrayList<String> output = new ArrayList<String>();
+    String output;
 
-    OneThread(ArrayList<String> input, ArrayList<String> output){
+    OneThread(ArrayList<String> input, String output){
         this.input = input;
         this.output = output;
     }
@@ -13,7 +13,7 @@ public class OneThread implements Runnable{
     public void run() {
         for(int i = 0;i< input.size();i++){
             try {
-                commonestWords(input.get(i), output.get(i));
+                commonestWords(input.get(i), output);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -51,7 +51,7 @@ public class OneThread implements Runnable{
             }
         }
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(outFilename));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(outFilename,true));
         writer.write("Найчастіше зустрічаються: ");
 
         writer.newLine();

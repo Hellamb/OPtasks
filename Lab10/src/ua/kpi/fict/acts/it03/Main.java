@@ -35,7 +35,6 @@ public class Main {
         llist.add(t1);
 
         llist.forEach(iterator-> System.out.println(iterator));
-
     }
 
 
