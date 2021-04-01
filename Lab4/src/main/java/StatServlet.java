@@ -10,6 +10,8 @@ import java.util.stream.LongStream;
 
 @WebServlet(name = "StatServlet", value = "/stat")
 public class StatServlet extends HttpServlet {
+    StatModel model = new StatModel();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
@@ -21,7 +23,7 @@ public class StatServlet extends HttpServlet {
             return;
         }
 
-        request.setAttribute("stat", Map.of("Most disliked videos", vlog.getWorstVideos().stream().map(Video::getName).toArray(), "Views on vlog",  new long[] {vlog.overallViews()}));
+        request.setAttribute("stat", model.getStat(vlog));
 
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/stat.jsp").forward(request, response);
     }

@@ -1,0 +1,52 @@
+.content-wrapper {
+  padding: 0 100px;
+}
+.content-wrapper .videos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.content-wrapper .videos .video {
+  width: 200px;
+  min-height: 300px;
+  border-radius: 20px;
+  padding: 30px 20px;
+  justify-self: center;
+  background-color: #fff;
+  border: 1px solid darkgrey;
+  cursor: pointer;
+}
+.content-wrapper .videos .video:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
+}
+.content-wrapper .videos .video .video-poster {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+.content-wrapper .videos .video .video-poster img {
+  width: 100%;
+  height: auto;
+}
+.content-wrapper .videos .video .video-description {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid darkgrey;
+  font-size: 18px;
+}
+.content-wrapper .no-video {
+  font-size: 24px;
+}
+.content-wrapper .add-video {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+.content-wrapper .add-video button a {
+  color: #D44D5C;
+}
+
+/*# sourceMappingURL=vlog.css.map */

@@ -13,6 +13,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Lab4" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="Maven: org.apache.taglibs:taglibs-standard-impl:1.2.5" module-name="Lab4" />
+          <element id="library" level="module" name="Maven: org.apache.taglibs:taglibs-standard-spec:1.2.5" module-name="Lab4" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/Lab4-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
