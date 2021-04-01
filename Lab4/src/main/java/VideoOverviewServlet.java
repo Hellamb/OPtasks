@@ -10,6 +10,8 @@ import java.util.Map;
 
 @WebServlet(name = "VideoOverviewServlet", value = "/video")
 public class VideoOverviewServlet extends HttpServlet {
+    VideoModel model = new VideoModel();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> params = request.getParameterMap();
@@ -19,36 +21,28 @@ public class VideoOverviewServlet extends HttpServlet {
             response.sendError(400, "Id is not specified!");
             return;
         }
-
-        int id;
-
-        try
-        {
-            id = Integer.parseInt(params.get("id")[0]);
-        }catch (NumberFormatException e)
-        {
-            response.sendError(400, "Invalid id!");
-            return;
-        }
         HttpSession session = request.getSession();
 
         Vlog vlog = (Vlog) session.getAttribute("vlog");
 
-        if (vlog == null)
+        Video video;
+
+        try
+        {
+            video = model.getVideoById(params.get("id")[0], vlog);
+        }catch (NumberFormatException e)
+        {
+            response.sendError(400, e.getMessage());
+            return;
+        }catch (IllegalArgumentException e)
         {
             response.sendRedirect("/");
             return;
-        }
-
-        ArrayList<Video> videosList = vlog.getVideos();
-
-        if (id < 0 || id >= videosList.size())
+        }catch (IndexOutOfBoundsException e)
         {
-            response.sendError(400, "Id is out of bounds!");
+            response.sendError(400, e.getMessage());
             return;
         }
-
-        Video video = videosList.get(id);
 
         if (!video.getViewers().contains(vlog))
         {
@@ -56,7 +50,7 @@ public class VideoOverviewServlet extends HttpServlet {
             video.getViewers().add(vlog);
         }
 
-        request.setAttribute("video", videosList.get(id));
+        request.setAttribute("video", video);
 
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/video.jsp").forward(request, response);
     }
@@ -71,33 +65,24 @@ public class VideoOverviewServlet extends HttpServlet {
             return;
         }
 
-        int id;
-
-        try
-        {
-            id = Integer.parseInt(params.get("video-id")[0]);
-        }catch (Exception e)
-        {
-            response.sendError(400, "Invalid id!");
-            return;
-        }
         HttpSession session = request.getSession();
 
         Vlog vlog = (Vlog) session.getAttribute("vlog");
 
-        if (vlog == null)
+        Video video;
+
+        try
         {
-            response.sendError(400, "Vlog is not created!");
+            video = model.getVideoById(params.get("video-id")[0], vlog);
+        }catch (IllegalArgumentException e)
+        {
+            response.sendRedirect("/");
+            return;
+        }catch (IndexOutOfBoundsException e)
+        {
+            response.sendError(400, e.getMessage());
             return;
         }
-
-        if (id < 0 || id >= vlog.getVideos().size())
-        {
-            response.sendError(400, "Id is out of bounds!");
-            return;
-        }
-
-        Video video = vlog.getVideos().get(id);
 
         //comments manipulations
         if (params.containsKey("comment-body"))
@@ -107,45 +92,17 @@ public class VideoOverviewServlet extends HttpServlet {
         //Likes/dislikes processing
         else if (params.containsKey("liked"))
         {
-            if (video.getLikers().contains(vlog))
-            {
-                video.getLikers().remove(vlog);
-                video.decreaseLikes();
-            }else
-            {
-                video.getLikers().add(vlog);
-
-                if (video.getDislikers().remove(vlog))
-                {
-                    video.decreaseDislikes();
-                }
-
-                video.increaseLikes();
-            }
-        }else if (params.containsKey("disliked"))
-        {
-            if (video.getDislikers().contains(vlog))
-            {
-                video.getDislikers().remove(vlog);
-                video.decreaseDislikes();
-            }else
-            {
-                video.getDislikers().add(vlog);
-
-                if (video.getLikers().remove(vlog))
-                {
-                    video.decreaseLikes();
-                }
-
-                video.increaseDislikes();
-            }
+            model.processLiking(video, vlog, true);
+        }else if (params.containsKey("disliked")) {
+            model.processLiking(video, vlog, false);
+        }
         //else return error
-        }else
+        else
         {
             response.sendError(400);
         }
 
 
-        response.sendRedirect("/video?id=" + id);
+        response.sendRedirect("/video?id=" + params.get("video-id")[0]);
     }
 }

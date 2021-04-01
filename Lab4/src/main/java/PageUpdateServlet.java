@@ -29,18 +29,21 @@ public class PageUpdateServlet extends HttpServlet {
 
         Vlog vlog = (Vlog) request.getSession().getAttribute("vlog");
 
+        //If vlog is not set then we redirect to main page to authorize
         if (vlog == null)
         {
             response.sendError(400, "Vlog is not created");
             return;
         }
 
+        //Process each parameter
         if (params.containsKey("video-name") && params.containsKey("video-url") && params.containsKey("video-poster-url"))
         {
             try
             {
-                Video video = new Video(params.get("video-name")[0], params.get("video-url")[0], params.get("video-poster-url")[0]);
-                vlog.addVideo(video);
+                vlog.addVideo(new Video(params.get("video-name")[0],
+                                        params.get("video-url")[0],
+                                        params.get("video-poster-url")[0]));
             }catch (MalformedURLException e)
             {
                 response.sendRedirect("/pageUpdate");

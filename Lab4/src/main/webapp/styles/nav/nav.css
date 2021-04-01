@@ -1,0 +1,31 @@
+.main-nav {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  color: #773344;
+  font-weight: bold;
+  padding: 10px 50px;
+  background-color: #0B0014;
+  border-radius: 0 0 10px 10px;
+}
+.main-nav a {
+  color: #773344;
+}
+.main-nav .nav-content {
+  display: flex;
+}
+.main-nav .nav-content .nav-item {
+  margin-right: 40px;
+}
+.main-nav .nav-content .nav-item:hover {
+  transform: scale(1.05);
+}
+.main-nav .nav-content .nav-item:last-of-type {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/*# sourceMappingURL=nav.css.map */

@@ -1,9 +1,10 @@
 package ua.kpi.fict.acts.it03;
 
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -39,9 +40,11 @@ public class Main {
         faculty2.getList().add(student4);
 
 
-        //task1(abitura, 4);
+        task1(abitura, 4);
+        System.out.println("---");
         task2(univer);
-        //task3(abitura);
+        System.out.println("---");
+        task3(abitura);
 
 
     }
@@ -66,25 +69,36 @@ public class Main {
 
     public static void task2(University university)
     {
-        int[] sum = {0,0};
-        university.getList().forEach(x -> x.getList().stream()
-                .forEach( y -> sum[0]+= y.getScore())); //все баллы всех студентов
+//        int[] sum = {0,0};
+//        university.getList().forEach(x -> x.getList().stream()
+//                .forEach( y -> sum[0]+= y.getScore())); //все баллы всех студентов
+//
+//        university.getList().stream()
+//                .forEach(x-> sum[1] += x.getList().size()); //общее количество студентов
+//
+//        int middleScore = sum[0]/sum[1];
 
-        university.getList().stream()
-                .forEach(x-> sum[1] += x.getList().size()); //общее количество студентов
+//        LinkedList<Student> topStudents = new LinkedList<>();
+//        university.getList().forEach(x -> x.getList().stream()
+//                        .filter(y -> y.getScore() > middleScore).forEach(topStudents::add));
+//        topStudents.stream().sorted(Comparator.comparing(Student::getName)).forEach(System.out::println);
 
-        int middleScore = sum[0]/sum[1];
+        double middleScore = university.getList().stream()
+                .flatMap(x -> x.getList().stream())
+                .mapToInt(Student::getScore)
+                .average()
+                .getAsDouble();
 
-        /*LinkedList<Student> allStudents = new LinkedList<>();
-        university.getList().forEach(x -> x.getList().stream()
-                .forEach(allStudents::add));
-        double middleScore2 = allStudents.stream().mapToInt(st -> st.getScore()).average().getAsDouble();
-        System.out.println(middleScore + middleScore2);*/
+        List<Student> topStudents;
+        topStudents = university.getList().stream()
+                .flatMap(x -> x.getList().stream())
+                .filter(x -> x.getScore() > middleScore)
+                .collect(Collectors.toList());
 
-        LinkedList<Student> topStudents = new LinkedList<>();
-        university.getList().forEach(x -> x.getList().stream()
-                        .filter(y -> y.getScore() > middleScore).forEach(topStudents::add));
-        topStudents.stream().sorted(Comparator.comparing(Student::getName)).forEach(System.out::println);
+        topStudents.stream()
+                .sorted(Comparator.comparing(Student::getName))
+                .forEach(System.out::println);
+
 
     }
 }

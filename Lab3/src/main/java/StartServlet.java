@@ -14,60 +14,42 @@ public class StartServlet extends HttpServlet {
 
         if (!params.isEmpty())
         {
-            if (!params.containsKey("a") || !params.containsKey("b") || !params.containsKey("c") || !params.containsKey("d") || !params.containsKey("equation"))
+            if (    !params.containsKey("a")
+                    || !params.containsKey("b")
+                    || !params.containsKey("c")
+                    || !params.containsKey("d")
+                    || !params.containsKey("equation"))
             {
                 //Bad Request
                 response.sendError(400);
                 return;
             }
 
+            String aParam = params.get("a")[0];
+            String bParam = params.get("b")[0];
+            String cParam = params.get("c")[0];
+            String dParam = params.get("d")[0];
+            String equation = params.get("equation")[0];
             double result;
 
             try
             {
-                switch (params.get("equation")[0])
-                {
-                    case "1":
-                         result = Equations.template1(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
-                        break;
-
-                    case "2":
-                         result = Equations.template2(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
-                        break;
-
-                    case "3":
-                         result = Equations.template3(Double.parseDouble(params.get("a")[0]),
-                                Double.parseDouble(params.get("b")[0]),
-                                Double.parseDouble(params.get("c")[0]),
-                                Double.parseDouble(params.get("d")[0]));
-                        break;
-
-                    default:
-                        response.sendError(400, "Wrong equation");
-                        return;
-                }
-            }
-            catch (NumberFormatException e)
+                 result = Equations.parseParams(aParam,bParam,cParam,dParam,equation);
+            }catch (IllegalArgumentException e)
             {
-                //Bad request
-                response.sendError(400);
+                response.sendError(400, e.getMessage());
                 return;
             }
+
 
             //Cookies
             Cookie[] eqData = new Cookie[5];
 
-            eqData[0] = new Cookie("parameterA", params.get("a")[0]);
-            eqData[1] = new Cookie("parameterB", params.get("b")[0]);
-            eqData[2] = new Cookie("parameterC", params.get("c")[0]);
-            eqData[3] = new Cookie("parameterD", params.get("d")[0]);
-            eqData[4] = new Cookie("nEquation", params.get("equation")[0]);
+            eqData[0] = new Cookie("parameterA", aParam);
+            eqData[1] = new Cookie("parameterB", bParam);
+            eqData[2] = new Cookie("parameterC", bParam);
+            eqData[3] = new Cookie("parameterD", bParam);
+            eqData[4] = new Cookie("nEquation", equation);
 
             for (Cookie eqDatum : eqData) {
                 //2 Days
@@ -81,23 +63,20 @@ public class StartServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             ArrayList<Map<String, String>> ps = (ArrayList<Map<String, String>>) session.getAttribute("parameters");
+            Map<String, String> eqSesData = Map.of("a", aParam,
+                    "b", bParam,
+                    "c", cParam,
+                    "d", dParam,
+                    "equation", equation,
+                    "result", String.valueOf(result));
+
             if (ps != null)
-                ps.add(Map.of("a", params.get("a")[0],
-                        "b", params.get("b")[0],
-                        "c", params.get("c")[0],
-                        "d", params.get("d")[0],
-                        "equation", params.get("equation")[0],
-                        "result", String.valueOf(result)));
+                ps.add(eqSesData);
             else
             {
                 ArrayList<Map<String, String>> sesParams = new ArrayList<>();
 
-                sesParams.add(Map.of("a", params.get("a")[0],
-                        "b", params.get("b")[0],
-                        "c", params.get("c")[0],
-                        "d", params.get("d")[0],
-                        "equation", params.get("equation")[0],
-                        "result", String.valueOf(result)));
+                sesParams.add(eqSesData);
 
                 session.setAttribute("parameters", sesParams);
             }
