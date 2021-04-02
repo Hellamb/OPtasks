@@ -44,12 +44,4 @@ public class Drops extends Medicine{
                 '}';
     }
 
-    public String toString(int i) {
-        return  "name='" + name +
-                ", volume=" + volume + '\'' +
-                ", receiveFrequencyPerDay=" + receiveFrequencyPerDay +
-                ", actionTime=" + actionTime +
-                ", disease='" + disease + '\'';
-    }
-
 }

@@ -9,8 +9,8 @@
 
 <nav class="main-nav">
     <ul class="nav-content">
-        <li class="nav-item"><a href="/">Video list</a></li>
-        <li class="nav-item"><a href="/pageUpdate"><c:out value="${sessionScope['vlog'].author}" default="Signed out" /> </a></li>
-        <li class="nav-item"><a href="/stat">Watch statistics</a></li>
+        <li class="nav-item"><a href="${pageContext.request.contextPath}/">Video list</a></li>
+        <li class="nav-item"><a href="${pageContext.request.contextPath}/pageUpdate"><c:out value="${sessionScope['vlog'].author}" default="Signed out" /> </a></li>
+        <li class="nav-item"><a href="${pageContext.request.contextPath}/stat">Watch statistics</a></li>
     </ul>
 </nav>

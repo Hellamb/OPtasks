@@ -72,10 +72,5 @@ public abstract class Medicine {
                 ", disease='" + disease + '\'' +
                 '}';
     }
-    public String toString(int i) {
-        return  "name='" + name + '\'' +
-                ", receiveFrequencyPerDay=" + receiveFrequencyPerDay +
-                ", actionTime=" + actionTime +
-                ", disease='" + disease + '\'';
-    }
+
 }

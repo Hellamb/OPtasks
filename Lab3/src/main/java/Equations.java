@@ -16,15 +16,18 @@ public class Equations {
             switch (equation)
             {
                 case "1":
-                    result = Equations.template1(a, b, c, d);
+                    CalculationLogic calc1 = new CalculationLogic(new CalcMethod1());
+                    result = calc1.calculate(a,b,c,d);
                     break;
 
                 case "2":
-                    result = Equations.template2(a, b, c, d);
+                    CalculationLogic calc2 = new CalculationLogic(new CalcMethod2());
+                    result = calc2.calculate(a,b,c,d);
                     break;
 
                 case "3":
-                    result = Equations.template3(a, b, c, d);
+                    CalculationLogic calc3 = new CalculationLogic(new CalcMethod3());
+                    result = calc3.calculate(a,b,c,d);
                     break;
 
                 default:
@@ -37,24 +40,5 @@ public class Equations {
         }
 
         return result;
-    }
-    private static double template1(double a, double b, double c, double d)
-    {
-        return roundToPlaces((pow(a, b))/(sinh(abs(b))) + 4 * (log(c))/(pow(d, 0.25)), 4);
-    }
 
-    private static double template2(double a, double b, double c, double d)
-    {
-        return roundToPlaces((6 * pow(sin(abs(2*a)), log10(b))) + (sqrt(c*cosh(-d))), 4);
-    }
-
-    private static double template3(double a, double b, double c, double d)
-    {
-        return roundToPlaces((9 * asin(a)/cos(sqrt(abs(b)))) + (pow(2.43, d)) + (log(c)), 4);
-    }
-
-    private static double roundToPlaces(double number, int places)
-    {
-        return (double) round(number * pow(10, places)) / pow(10, places);
-    }
-}
+}}

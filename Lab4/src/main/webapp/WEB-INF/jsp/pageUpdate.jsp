@@ -40,7 +40,7 @@
         <section class="content">
             <div class="option-item settings">
                 <div class="settings-content">
-                    <form action="/pageUpdate" method="post">
+                    <form action="${pageContext.request.contextPath}/pageUpdate" method="post">
                         <ul class="setting-list">
                             <li class="setting-field">Username: <input required name="setting-username" type="text"></li>
                             <li class="setting-field"><input value="Apply" type="submit"></li>

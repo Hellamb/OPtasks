@@ -63,12 +63,12 @@ public class StartServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             ArrayList<Map<String, String>> ps = (ArrayList<Map<String, String>>) session.getAttribute("parameters");
-            Map<String, String> eqSesData = Map.of("a", aParam,
-                    "b", bParam,
-                    "c", cParam,
-                    "d", dParam,
-                    "equation", equation,
-                    "result", String.valueOf(result));
+            Map<String, String> eqSesData = Map.of( "a", aParam,
+                                                    "b", bParam,
+                                                    "c", cParam,
+                                                    "d", dParam,
+                                                    "equation", equation,
+                                                    "result", String.valueOf(result));
 
             if (ps != null)
                 ps.add(eqSesData);

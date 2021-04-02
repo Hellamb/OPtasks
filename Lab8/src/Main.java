@@ -44,9 +44,7 @@ public class Main {
 
         System.out.println("-------------Comparator 1 (Treeset)-----------------");
         TreeSet<Pills> treeset1 = new TreeSet<Pills>(comp1);
-        for (Pills item:arr){
-            treeset1.add(item);
-        }
+        treeset1.addAll(Arrays.asList(arr));
         for (Pills item:treeset1){
             System.out.println(item.getName() + " " + item.getPrice());
         }
