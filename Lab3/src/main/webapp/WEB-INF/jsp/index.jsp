@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
 
     <%! Date today = new Date(); %>
-
+    <jsp:useBean id="ParamBean" beanName="paramBeam" scope="session" >
     <title>Equations <%=today.toString()%></title>
 </head>
 <body>

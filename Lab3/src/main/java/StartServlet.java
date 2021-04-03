@@ -25,16 +25,13 @@ public class StartServlet extends HttpServlet {
                 return;
             }
 
-            String aParam = params.get("a")[0];
-            String bParam = params.get("b")[0];
-            String cParam = params.get("c")[0];
-            String dParam = params.get("d")[0];
-            String equation = params.get("equation")[0];
             double result;
+            Equations equations;
 
             try
             {
-                 result = Equations.parseParams(aParam,bParam,cParam,dParam,equation);
+                equations = new Equations(params);
+                result = equations.calc();
             }catch (IllegalArgumentException e)
             {
                 response.sendError(400, e.getMessage());
@@ -45,11 +42,11 @@ public class StartServlet extends HttpServlet {
             //Cookies
             Cookie[] eqData = new Cookie[5];
 
-            eqData[0] = new Cookie("parameterA", aParam);
-            eqData[1] = new Cookie("parameterB", bParam);
-            eqData[2] = new Cookie("parameterC", bParam);
-            eqData[3] = new Cookie("parameterD", bParam);
-            eqData[4] = new Cookie("nEquation", equation);
+            eqData[0] = new Cookie("parameterA", request.getParameter("a"));
+            eqData[1] = new Cookie("parameterB", request.getParameter("b"));
+            eqData[2] = new Cookie("parameterC", request.getParameter("c"));
+            eqData[3] = new Cookie("parameterD", request.getParameter("d"));
+            eqData[4] = new Cookie("nEquation", request.getParameter("equation"));
 
             for (Cookie eqDatum : eqData) {
                 //2 Days
@@ -63,11 +60,11 @@ public class StartServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             ArrayList<Map<String, String>> ps = (ArrayList<Map<String, String>>) session.getAttribute("parameters");
-            Map<String, String> eqSesData = Map.of( "a", aParam,
-                                                    "b", bParam,
-                                                    "c", cParam,
-                                                    "d", dParam,
-                                                    "equation", equation,
+            Map<String, String> eqSesData = Map.of( "a", request.getParameter("a"),
+                                                    "b", request.getParameter("b"),
+                                                    "c", request.getParameter("c"),
+                                                    "d", request.getParameter("d"),
+                                                    "equation", request.getParameter("equation"),
                                                     "result", String.valueOf(result));
 
             if (ps != null)

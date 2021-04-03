@@ -1,7 +1,6 @@
 import static java.lang.Math.*;
-import static java.lang.Math.log;
 
-public class CalcMethod2 implements ICalc {
+public class CalcMethod2 implements ICalcMethod {
 
     @Override
     public double calc(double a, double b, double c, double d) {
