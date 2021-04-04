@@ -16,12 +16,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
 
     <%! Date today = new Date(); %>
-    <jsp:useBean id="ParamBean" beanName="paramBeam" scope="session" >
     <title>Equations <%=today.toString()%></title>
 </head>
 <body>
     <div class="content">
-        <form action="#" class="form" method="get">
+        <form action="#" class="form" method="post">
             <div class="inputs">
                 <div class="parameters">
                     <input name="a" value="<c:out value="${param.get('a')}" default="${cookie['parameterA'].value}" />" required placeholder="a"/>
@@ -103,7 +102,7 @@
                         <td><c:out value="${row.get('b')}" /></td>
                         <td><c:out value="${row.get('c')}" /></td>
                         <td><c:out value="${row.get('d')}" /></td>
-                        <td><img src="/images/equation<c:out value="${row.get('equation')}" />.png" alt="" /></td>
+                        <td><c:out value="${row.get('equation')}"/></td>
                         <td><c:out value="${row.get('result')}" /></td>
                     </tr>
                 </c:forEach>

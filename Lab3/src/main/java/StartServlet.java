@@ -9,7 +9,7 @@ import java.util.Map;
 public class StartServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> params = request.getParameterMap();
 
         if (!params.isEmpty())
@@ -81,4 +81,11 @@ public class StartServlet extends HttpServlet {
 
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
+
 }
+

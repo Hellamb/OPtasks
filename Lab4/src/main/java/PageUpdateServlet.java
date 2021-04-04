@@ -41,9 +41,9 @@ public class PageUpdateServlet extends HttpServlet {
         {
             try
             {
-                vlog.addVideo(new Video(params.get("video-name")[0],
-                                        params.get("video-url")[0],
-                                        params.get("video-poster-url")[0]));
+                vlog.addVideo(new Video(request.getParameter("video-name"),
+                        request.getParameter("video-url"),
+                        request.getParameter("video-poster-url")));
             }catch (MalformedURLException e)
             {
                 response.sendRedirect("/pageUpdate");
@@ -52,7 +52,7 @@ public class PageUpdateServlet extends HttpServlet {
         }
         else if (params.containsKey("setting-username"))
         {
-            vlog.setAuthor(params.get("setting-username")[0]);
+            vlog.setAuthor(request.getParameter("setting-username"));
         }else
         {
             response.sendError(400);
