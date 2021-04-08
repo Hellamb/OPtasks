@@ -25,16 +25,10 @@ public class MultiThreads implements Task{
 
         //кол-во множителей для одного потока
         int m = n/threadsCount;
-
-        //если число n нацело не делится на кол-во потоков
-        //то в последний поток добавляем остаток от деления
         int mLast = n/threadsCount + n%threadsCount;
 
-        //в этом списке храним все запускаемые потоки
         List<ArithmeticThread> threads = new ArrayList<ArithmeticThread>(threadsCount);
 
-
-        //запускаем потоки
         ArithmeticThread at;
         for(int i = 0; i < threadsCount; i++){
             nMin = nMax + 1;
@@ -44,9 +38,6 @@ public class MultiThreads implements Task{
             threads.add(at);
             at.start();
         }
-
-        // Мониторим окончание работы потоков и
-        // суммируем итоговый результат
 
         for(ArithmeticThread t : threads){
             try {

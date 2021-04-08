@@ -10,7 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LinkedList<Enrollee> abitura = new LinkedList<>();
+        LinkedList<Enrollee> abitura = formAbitura(new LinkedList<>());
+        University univer = formUniver(new University("KPI"));
+
+        task1(abitura, 4);
+        System.out.println("---");
+        task2(univer);
+        System.out.println("---");
+        task3(abitura);
+
+
+    }
+
+    public static LinkedList<Enrollee> formAbitura(LinkedList<Enrollee> abitura){
         abitura.add(new Enrollee("Dvacatka",20));
         abitura.add(new Enrollee("Soroket",40));
         abitura.add(new Enrollee("FiveSeven",57));
@@ -21,7 +33,10 @@ public class Main {
         abitura.add(new Enrollee("Bezpyati",95));
         abitura.add(new Enrollee("Sotnik",100));
 
-        University univer = new University("KPI");
+        return abitura;
+    }
+
+    public static University formUniver(University univer){
 
         Faculty faculty1 = new Faculty("FICT");
         Faculty faculty2 = new Faculty("IASA");
@@ -39,14 +54,7 @@ public class Main {
         faculty2.getList().add(student3);
         faculty2.getList().add(student4);
 
-
-        task1(abitura, 4);
-        System.out.println("---");
-        task2(univer);
-        System.out.println("---");
-        task3(abitura);
-
-
+        return univer;
     }
 
     public static void task1(LinkedList<Enrollee> list, int limit)

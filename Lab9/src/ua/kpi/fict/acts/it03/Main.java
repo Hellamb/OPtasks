@@ -1,57 +1,71 @@
 package ua.kpi.fict.acts.it03;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.TreeSet;
 
 public class Main {
 
     public static void main(String[] args) {
-        test1();
-        
-    }
-
-    public static void test1()
-    {
-        Test t1 = new Test("test1",1);
-        Test t2 = new Test("test2", 2);
-        Test t3 = new Test("test3",2);
-        Test t4 = new Test("test4", 5);
+        LinkedList<Test> listTest = formList();
 
         Comparator<Test> comp = (test1,test2) -> Double.compare(test1.getValue(),test2.getValue());
         Comparator<Test> comp2 = (a, b) -> (a.getName().compareTo(b.getName()));
 
-        TreeSet<Test> testSet1 = new TreeSet<>(comp);
-        testSet1.add(t4);
-        testSet1.add(t3);
-        testSet1.add(t2);
-        testSet1.add(t1);
-        System.out.println(testSet1);
-
-        TreeSet<Test> testSet2 = new TreeSet<>(comp.reversed());
-        testSet2.add(t4);
-        testSet2.add(t3);
-        testSet2.add(t2);
-        testSet2.add(t1);
-        System.out.println(testSet2);
-
-        TreeSet<Test> testSet3 = new TreeSet<>(comp.thenComparing(comp2));
-        testSet3.add(t4);
-        testSet3.add(t3);
-        testSet3.add(t2);
-        testSet3.add(t1);
-        System.out.println(testSet3);
-
-        TreeSet<Test> testSet4 = new TreeSet<>(Comparator.nullsFirst(comp));
-        testSet4.add(t4);
-        testSet4.add(t3);
-        testSet4.add(t2);
-        testSet4.add(t1);
-        testSet4.add(null);
-        System.out.println(testSet4);
-
-
-
+        treeSet1(listTest, comp);
+        treeSet2(listTest, comp);
+        treeSet3(listTest, comp2);
+        treeSet4(listTest, comp);
+        
     }
+
+    public static LinkedList formList(){
+        LinkedList<Test> list = new LinkedList<>();
+        list.add(new Test("test1",1));
+        list.add(new Test("test2", 2));
+        list.add(new Test("test3",2));
+        list.add(new Test("test4", 5));
+        return list;
+    }
+
+    public static void treeSet1(LinkedList<Test> listTest,Comparator<Test> comp){
+        TreeSet<Test> testSet = new TreeSet<>(comp);
+        for(Test item:listTest){
+            testSet.add(item);
+        }
+        System.out.println(testSet);
+    }
+
+    public static void treeSet2(LinkedList<Test> listTest,Comparator<Test> comp){
+        TreeSet<Test> testSet = new TreeSet<>(comp.reversed());
+        for(Test item:listTest){
+            testSet.add(item);
+        }
+        System.out.println(testSet);
+    }
+
+    public static void treeSet3(LinkedList<Test> listTest,Comparator<Test> comp){
+        TreeSet<Test> testSet = new TreeSet<>(comp.thenComparing(comp));
+        for(Test item:listTest){
+            testSet.add(item);
+        }
+        System.out.println(testSet);
+    }
+
+    public static void treeSet4(LinkedList<Test> listTest,Comparator<Test> comp){
+        TreeSet<Test> testSet = new TreeSet<>(Comparator.nullsFirst(comp));
+        for(Test item:listTest){
+            testSet.add(item);
+        }
+        testSet.add(null);
+        System.out.println(testSet);
+    }
+
+
+
+
+
+
 
     public static void task1()
     {
