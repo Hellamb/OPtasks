@@ -17,8 +17,6 @@ public class MultiThread implements Runnable{
         try {
             synchronized (this.writer) {
                 CountWords.count(this.reader, this.writer);
-                this.reader.close();
-                this.writer.close();
             }
         } catch (IOException e) {
             e.printStackTrace();

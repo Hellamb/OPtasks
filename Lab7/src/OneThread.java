@@ -25,9 +25,6 @@ public class OneThread implements Runnable, CountWords{
         BufferedWriter writer = new BufferedWriter(new FileWriter(outFilename,true));
 
         CountWords.count(reader,writer);
-
-        reader.close();
-        writer.close();
     }
 
 }
