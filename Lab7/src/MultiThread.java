@@ -15,13 +15,9 @@ public class MultiThread implements Runnable{
     @Override
     public void run() {
         try {
-            Map<String, Integer> comWords = CountWords.readWords(new HashMap<String, Integer>(), reader);
-            this.reader.close();
-
-            ArrayList<String> comWordsMax = CountWords.comWordsMaximum(comWords);
-
             synchronized (this.writer) {
-                CountWords.writeRes(comWordsMax, this.writer);
+                CountWords.count(this.reader, this.writer);
+                this.reader.close();
                 this.writer.close();
             }
         } catch (IOException e) {

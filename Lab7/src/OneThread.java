@@ -21,17 +21,13 @@ public class OneThread implements Runnable, CountWords{
     }
 
     private void commonestWords(String inFilename, String outFilename) throws IOException {
-
         BufferedReader reader = new BufferedReader(new FileReader(inFilename));
-        Map<String, Integer> comWords = CountWords.readWords(new HashMap<String, Integer>(), reader);
-        reader.close();
-
-        ArrayList<String> comWordsMax = CountWords.comWordsMaximum(comWords);
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(outFilename,true));
-        CountWords.writeRes(comWordsMax, writer);
-        writer.close();
 
+        CountWords.count(reader,writer);
+
+        reader.close();
+        writer.close();
     }
 
 }

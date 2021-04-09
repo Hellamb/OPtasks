@@ -1,9 +1,20 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
 public interface CountWords {
+    static void count(BufferedReader reader, BufferedWriter writer) throws IOException {
+        Map<String, Integer> comWords = CountWords.readWords(new HashMap<String, Integer>(), reader);
+        reader.close();
+
+        ArrayList<String> comWordsMax = CountWords.comWordsMaximum(comWords);
+
+        CountWords.writeRes(comWordsMax, writer);
+        writer.close();
+    }
+
     static Map<String, Integer> readWords(HashMap<String, Integer> comWords, BufferedReader reader) throws IOException {
         String str;
         while ((str = reader.readLine()) != null){
