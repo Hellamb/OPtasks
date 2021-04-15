@@ -4,27 +4,41 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public interface CountWords {
-    static void count(BufferedReader reader, BufferedWriter writer) throws IOException {
-        Map<String, Integer> comWords = CountWords.readWords(new HashMap<String, Integer>(), reader);
-        reader.close();
+public class CountWords {
+    void count(BufferedReader reader, BufferedWriter writer)
+            throws IOException
+    {
+        try
+        {
+            Map<String, Integer> comWords = readWords(new HashMap<String, Integer>(), reader);
 
-        ArrayList<String> comWordsMax = CountWords.comWordsMaximum(comWords);
+            ArrayList<String> comWordsMax = comWordsMaximum(comWords);
 
-        CountWords.writeRes(comWordsMax, writer);
-        writer.close();
+            writeRes(comWordsMax, writer);
+        }
+        finally
+        {
+            reader.close();
+            writer.close();
+        }
     }
 
-    static Map<String, Integer> readWords(HashMap<String, Integer> comWords, BufferedReader reader) throws IOException {
+    Map<String, Integer> readWords(HashMap<String, Integer> comWords, BufferedReader reader)
+            throws IOException
+    {
         String str;
-        while ((str = reader.readLine()) != null){
+        while ((str = reader.readLine()) != null)
+        {
             String[] words = str.split(" ");
-            for (int i = 0; i < words.length;i++){
-                if (comWords.containsKey(words[i])){
+            for (int i = 0; i < words.length;i++)
+            {
+                if (comWords.containsKey(words[i]))
+                {
                     int tmp = comWords.get(words[i]);
                     comWords.put(words[i], tmp + 1);
                 }
-                else{
+                else
+                    {
                     comWords.put(words[i],1);
                 }
             }
@@ -32,9 +46,11 @@ public interface CountWords {
         return comWords;
     }
 
-    static ArrayList<String> comWordsMaximum(Map<String, Integer> comWords){
-        Map<String,Integer> sortedWords = CountWords.sortByComparator(comWords, false);
+    ArrayList<String> comWordsMaximum(Map<String, Integer> comWords)
+    {
+        Map<String,Integer> sortedWords = sortByComparator(comWords, false);
         Integer v = 0;
+
         ArrayList<String> comWordsMax = new ArrayList<String>();
         for (Map.Entry<String, Integer> entry : sortedWords.entrySet())
         {
@@ -47,9 +63,10 @@ public interface CountWords {
         return comWordsMax;
     }
 
-    static void writeRes(ArrayList<String> res, BufferedWriter writer) throws IOException {
+    void writeRes(ArrayList<String> res, BufferedWriter writer)
+            throws IOException
+    {
         writer.write("Найчастіше зустрічаються: ");
-
         writer.newLine();
         for (String item : res) {
             writer.write(item);
@@ -57,7 +74,7 @@ public interface CountWords {
         }
     }
 
-    static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order)
+    Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order)
     {
 
         List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
